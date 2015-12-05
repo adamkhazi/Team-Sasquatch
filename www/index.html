@@ -28,7 +28,6 @@
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
         -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
@@ -43,6 +42,22 @@
                 <p class="event received">Device is Ready</p>
             </div>
         </div>
+        <script type="text/javascript" src="js/react.js"></script>
+        <script type="text/javascript" src="js/sdk-0.0.7.js"></script>
+        <script type="text/javascript">
+        document.addEventListener( 'DOMContentLoaded', function () {
+          humm.completeAuthorization(window.location);
+          humm.init({
+            client_id: '56631f05ae8c50c03c8b4568',
+              secret: '492d00e7466ad334c1227a0f729e713dddcc27abe03837281b26d579aaf94470'
+         });
+          humm.authViaImplicitGrant(function(error, response) {
+            console.log('------------- authViaAuthorizationCode complete -------------');
+            console.log(error);
+            console.log(response);
+          });
+        }, false );
+        </script>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
     </body>
